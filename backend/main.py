@@ -13,7 +13,10 @@ from flask import Request, jsonify
 from config import app, db
 from models import Contact
 
-
+@app.route("/contacts", methods=["GET"])
+def get_contacts():
+    contacts = Contact.query.all()
+    json_contacts = map(lambda x: x.to_json(), contacts)
 
 
 
